@@ -55,6 +55,7 @@ public class ToggleSwitch : MonoBehaviour
     public void RegisterUser()
     {
         //AddUser/:userID/:userName/:userGender/:userSeniority/:userHouse/:userLogin/:userPassword
+        //https://testserversoubra.herokuapp.com/AddUser/2/ExampleName/Male/CEO/Green/ExampleLogin/E123
         Debug.Log("https://testserversoubra.herokuapp.com/AddUser/"
                 + userID + "/" + userName + "/" + userGender + "/" + userSeniority + "/" + userHouse + "/" + userLogin + "/" + userPassword);
 

@@ -28,7 +28,7 @@ public class LoginSystem : MonoBehaviour
     public void Login()
     {
         string login = "https://testserversoubra.herokuapp.com/Login/" + userName.text.ToString() + "/" + password.text.ToString();
-        Debug.Log(login);
+        //Debug.Log(login);
         StartCoroutine(GetRequest(login));
     }
 

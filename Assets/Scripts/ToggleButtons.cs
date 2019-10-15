@@ -42,6 +42,7 @@ public class ToggleButtons : MonoBehaviour
     {
         if (spread)
         {
+
             SpreadButtons();
             shade.SetActive(true);
             AppButton.GetComponent<Image>().sprite = XButton;

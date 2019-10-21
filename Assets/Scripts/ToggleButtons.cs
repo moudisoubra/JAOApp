@@ -42,7 +42,6 @@ public class ToggleButtons : MonoBehaviour
     {
         if (spread)
         {
-
             SpreadButtons();
             shade.SetActive(true);
             AppButton.GetComponent<Image>().sprite = XButton;
@@ -78,24 +77,34 @@ public class ToggleButtons : MonoBehaviour
     }
     public void SpreadButtons()
     {
-        ReadingRoomButton.transform.position = Vector3.Lerp(ReadingRoomButton.transform.position, ReadingRoomButtonPlaceHolder.transform.position, lerpSpeed);
-        StatisticsButton.transform.position = Vector3.Lerp(StatisticsButton.transform.position, StatisticsButtonPlaceHolder.transform.position, lerpSpeed);
-        IdeaGeneratorButton.transform.position = Vector3.Lerp(IdeaGeneratorButton.transform.position, IdeaGeneratorButtonPlaceHolder.transform.position, lerpSpeed);
-        CommunicationButton.transform.position = Vector3.Lerp(CommunicationButton.transform.position, CommunicationButtonPlaceHolder.transform.position, lerpSpeed);
-        ToolsButton.transform.position = Vector3.Lerp(ToolsButton.transform.position, ToolsButtonPlaceHolder.transform.position, lerpSpeed);
-        HomeButton.transform.position = Vector3.Lerp(HomeButton.transform.position, HomeButtonPlaceHolder.transform.position, lerpSpeed);
-        ProfileButton.transform.position = Vector3.Lerp(ProfileButton.transform.position, ProfileButtonPlaceHolder.transform.position, lerpSpeed);
+        ToButtonPosition(ReadingRoomButton, ReadingRoomButtonPlaceHolder);
+        ToButtonPosition(StatisticsButton, StatisticsButtonPlaceHolder);
+        ToButtonPosition(IdeaGeneratorButton, IdeaGeneratorButtonPlaceHolder);
+        ToButtonPosition(CommunicationButton, CommunicationButtonPlaceHolder);
+        ToButtonPosition(ToolsButton, ToolsButtonPlaceHolder);
+        ToButtonPosition(HomeButton, HomeButtonPlaceHolder);
+        ToButtonPosition(ProfileButton, ProfileButtonPlaceHolder);
     }
 
     public void ReturnButtons()
     {
-        ReadingRoomButton.transform.position = Vector3.Lerp(ReadingRoomButton.transform.position, AppButton.transform.position, lerpSpeed);
-        StatisticsButton.transform.position = Vector3.Lerp(StatisticsButton.transform.position, AppButton.transform.position, lerpSpeed);
-        IdeaGeneratorButton.transform.position = Vector3.Lerp(IdeaGeneratorButton.transform.position, AppButton.transform.position, lerpSpeed);
-        CommunicationButton.transform.position = Vector3.Lerp(CommunicationButton.transform.position, AppButton.transform.position, lerpSpeed);
-        ToolsButton.transform.position = Vector3.Lerp(ToolsButton.transform.position, AppButton.transform.position, lerpSpeed);
-        HomeButton.transform.position = Vector3.Lerp(HomeButton.transform.position, AppButton.transform.position, lerpSpeed);
-        ProfileButton.transform.position = Vector3.Lerp(ProfileButton.transform.position, AppButton.transform.position, lerpSpeed);
+        ReturnButtonsHome(ReadingRoomButton);
+        ReturnButtonsHome(StatisticsButton);
+        ReturnButtonsHome(IdeaGeneratorButton);
+        ReturnButtonsHome(CommunicationButton);
+        ReturnButtonsHome(ToolsButton);
+        ReturnButtonsHome(HomeButton);
+        ReturnButtonsHome(ProfileButton);
+    }
+
+    public void ToButtonPosition(GameObject button, GameObject buttonPlaceHolder)
+    {
+        button.transform.position = Vector3.Lerp(button.transform.position, buttonPlaceHolder.transform.position, lerpSpeed);
+    }
+
+    public void ReturnButtonsHome(GameObject button)
+    {
+        button.transform.position = Vector3.Lerp(button.transform.position, AppButton.transform.position, lerpSpeed);
     }
 
     public void EnlargeButtons()
@@ -108,9 +117,7 @@ public class ToggleButtons : MonoBehaviour
 
     public void SmallButtons()
     {
-
             HomeButton.transform.localScale = Vector3.Lerp(HomeButton.transform.localScale, AppButton.transform.localScale, lerpSpeed);
             ProfileButton.transform.localScale = Vector3.Lerp(ProfileButton.transform.localScale, AppButton.transform.localScale, lerpSpeed);
-        
     }
 }

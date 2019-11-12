@@ -20,7 +20,7 @@ public class ScrollBackground : MonoBehaviour
     {
         if (scroll)
         {
-            background.tra
+            //background.tra
         }
     }
 }

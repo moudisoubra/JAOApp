@@ -40,20 +40,20 @@ public class ToggleButtons : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (spread)
-        {
-            SpreadButtons();
-            shade.SetActive(true);
-            AppButton.GetComponent<Image>().sprite = XButton;
-            EnlargeButtons();
-        }
-        else if (!spread)
-        {
-            ReturnButtons();
-            shade.SetActive(false);
-            AppButton.GetComponent<Image>().sprite = appButton;
-            SmallButtons();
-        }
+        //if (spread)
+        //{
+        //    SpreadButtons();
+        //    shade.SetActive(true);
+        //    AppButton.GetComponent<Image>().sprite = XButton;
+        //    EnlargeButtons();
+        //}
+        //else if (!spread)
+        //{
+        //    ReturnButtons();
+        //    shade.SetActive(false);
+        //    AppButton.GetComponent<Image>().sprite = appButton;
+        //    SmallButtons();
+        //}
     }
 
     public void ChangeToPanel(string panelName)

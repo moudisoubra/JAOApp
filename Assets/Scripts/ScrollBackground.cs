@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class ScrollBackground : MonoBehaviour
 {
     public bool scroll;
-    public RawImage background;
+    public Renderer background;
     public float scrollFloat;
 
     // Start is called before the first frame update
@@ -20,7 +20,9 @@ public class ScrollBackground : MonoBehaviour
     {
         if (scroll)
         {
-            //background.tra
+            Vector2 offset = new Vector2(Time.time * scrollFloat, 0);
+
+            background.material.mainTextureOffset = offset;
         }
     }
 }

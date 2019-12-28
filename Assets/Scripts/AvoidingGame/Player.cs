@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     public float stunTimer;
     public float stunTimerDuration;
 
+    public bool start;
     public bool key;
     public bool canMove;
 
@@ -18,23 +19,34 @@ public class Player : MonoBehaviour
 
     public Animator playerAnimator;
     public SpriteRenderer sr;
+    public Text coinAmount;
+
+    public GameObject keyObject;
 
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();
         playerAnimator = GetComponent<Animator>();
+        keyObject.SetActive(false);
     }
 
 
     void Update()
     {
+        coinAmount.text = coinsCollected.ToString();
+        keyObject.SetActive(key);
+
+        if (start)
+        {
+            
         if (!canMove)
         {
             stunTimer += Time.deltaTime;
-            playerAnimator.SetTrigger("Falling");
+            playerAnimator.SetBool("Fall", true);
             if (stunTimer > stunTimerDuration)
             {
                 stunTimer = 0;
+                playerAnimator.SetBool("Fall", false);
                 canMove = true;
             }
         }
@@ -63,6 +75,7 @@ public class Player : MonoBehaviour
         {
             sr.flipX = true;
             MovePlayer(-1);
+        }
         }
     }
 

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Spawning : MonoBehaviour
 {
+    public bool spawn;
     public Player player;
     public GameObject[] spawners;
     public GameObject[] spawnees;
@@ -20,7 +21,9 @@ public class Spawning : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timer += Time.deltaTime;
+        if (spawn)
+        {
+                    timer += Time.deltaTime;
 
         if (timer > timerDuration)
         {
@@ -39,6 +42,7 @@ public class Spawning : MonoBehaviour
 
             Instantiate(spawnedObject, spawner.transform.position, Quaternion.identity);
             timer = 0;
+        }
         }
     }
 }

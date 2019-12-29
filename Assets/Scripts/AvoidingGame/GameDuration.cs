@@ -5,18 +5,20 @@ using UnityEngine.UI;
 
 public class GameDuration : MonoBehaviour
 {
-    public float gameDuration;
     public float gameTimer;
     public Text gameTimerText;
     public bool start;
+    public GameObject goText;
     public GameObject wall;
     public Player playerScript;
     public Spawning spawnScript;
+    public MoveCamera mcScript;
     // Start is called before the first frame update
     void Start()
     {
         playerScript = FindObjectOfType<Player>();
         spawnScript = FindObjectOfType<Spawning>();
+        mcScript = FindObjectOfType<MoveCamera>();
     }
 
     // Update is called once per frame
@@ -24,13 +26,16 @@ public class GameDuration : MonoBehaviour
     {
         if (start)
         {
-            gameTimer += Time.deltaTime;
+            gameTimer -= Time.deltaTime;
             gameTimerText.text = gameTimer.ToString("0");
-            if (gameTimer > gameDuration)
+            if (gameTimer <= 1)
             {
+                gameTimerText.text = "";
+                goText.SetActive(true);
                 wall.SetActive(false);
-                playerScript.start = false;
+                //playerScript.start = false;
                 spawnScript.spawn = false;
+                mcScript.Go = true;
                 start = false;
             }
         }

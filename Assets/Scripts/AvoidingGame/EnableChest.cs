@@ -7,6 +7,9 @@ public class EnableChest : MonoBehaviour
     public bool giveCoins;
     public Player player;
     public ChestController ccScript;
+    public GameObject button1;
+    public GameObject button2;
+    public GameObject buttonEnd;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,10 +38,16 @@ public class EnableChest : MonoBehaviour
             if (player.key)
             {
                 giveCoins = true;
+                button1.SetActive(false);
+                button2.SetActive(false);
+                buttonEnd.SetActive(true);
             }
             else
             {
                 Debug.Log("Player Doesnt Have Key!");
+                button1.SetActive(false);
+                button2.SetActive(false);
+                buttonEnd.SetActive(true);
             }
             player.start = false;
         }

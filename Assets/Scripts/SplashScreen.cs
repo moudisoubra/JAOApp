@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 public class SplashScreen : MonoBehaviour
 {
     public static int sceneNumber;
+    public int waitingNumber;
 
     // Start is called before the first frame update
     void Start()
@@ -17,7 +18,7 @@ public class SplashScreen : MonoBehaviour
 
     IEnumerator ToMainMenu()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(waitingNumber);
         Debug.Log("Coroutine Started");
         sceneNumber = 1;
         SceneManager.LoadScene(1);

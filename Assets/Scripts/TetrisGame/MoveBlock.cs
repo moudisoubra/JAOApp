@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MoveBlock : MonoBehaviour
 {
+    public Text math;
     public Vector3 rotationPoint;
     public float previousTime;
     public float fallTime = 0.8f;
@@ -17,15 +19,19 @@ public class MoveBlock : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        math = GameObject.FindGameObjectWithTag("Math").GetComponent<Text>();
         spawn = true;
         spawner = FindObjectOfType<TetrisSpawner>().gameObject;
         tsScript = FindObjectOfType<TetrisSpawner>();
         swipeControls = FindObjectOfType<Swipe>();
+        tsScript.currentBlock = this.gameObject;
     }
 
     // Update is called once per frame
     void Update()
     {
+            math.text = Mathf.RoundToInt(swipeControls.SwipeDeltas).ToString();
+        
         if (Input.GetKeyDown(KeyCode.A) || swipeControls.SwipeLeft)
         {
             MoveLeft();

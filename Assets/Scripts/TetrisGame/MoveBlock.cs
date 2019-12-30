@@ -41,17 +41,17 @@ public class MoveBlock : MonoBehaviour
     }
     public void MoveRight()
     {
-        transform.position += new Vector3(100, 0, 0);
+        transform.position += new Vector3(1, 0, 0);
     }
 
     public void MoveLeft()
     {
-        transform.position += new Vector3(-100, 0, 0);
+        transform.position += new Vector3(-1, 0, 0);
     }
 
     public void FallingTetris()
     {
-        transform.position += new Vector3(0, -100, 0);
+        transform.position += new Vector3(0, -1, 0);
         previousTime = Time.time;
     }
 }

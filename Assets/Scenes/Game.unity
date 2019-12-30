@@ -11721,6 +11721,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Character
       objectReference: {fileID: 0}
+    - target: {fileID: 254991760285370236, guid: c0ff2b151f1024a44afec8bb0581a494,
+        type: 3}
+      propertyPath: stunTimerDuration
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 254991760285370236, guid: c0ff2b151f1024a44afec8bb0581a494,
+        type: 3}
+      propertyPath: coinAmount
+      value: 
+      objectReference: {fileID: 427937431}
+    - target: {fileID: 254991760285370236, guid: c0ff2b151f1024a44afec8bb0581a494,
+        type: 3}
+      propertyPath: keyObject
+      value: 
+      objectReference: {fileID: 233093051}
+    - target: {fileID: 254991760285370236, guid: c0ff2b151f1024a44afec8bb0581a494,
+        type: 3}
+      propertyPath: key
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 259047990577212333, guid: c0ff2b151f1024a44afec8bb0581a494,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11785,26 +11805,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Constraints
       value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 254991760285370236, guid: c0ff2b151f1024a44afec8bb0581a494,
-        type: 3}
-      propertyPath: stunTimerDuration
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 254991760285370236, guid: c0ff2b151f1024a44afec8bb0581a494,
-        type: 3}
-      propertyPath: coinAmount
-      value: 
-      objectReference: {fileID: 427937431}
-    - target: {fileID: 254991760285370236, guid: c0ff2b151f1024a44afec8bb0581a494,
-        type: 3}
-      propertyPath: keyObject
-      value: 
-      objectReference: {fileID: 233093051}
-    - target: {fileID: 254991760285370236, guid: c0ff2b151f1024a44afec8bb0581a494,
-        type: 3}
-      propertyPath: key
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c0ff2b151f1024a44afec8bb0581a494, type: 3}

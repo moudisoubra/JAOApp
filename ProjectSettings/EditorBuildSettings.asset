@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SpaceShooter.unity
     guid: 870bb8bbb6982f34f9dd79e09c9e4af8
+  - enabled: 1
+    path: Assets/Scenes/Tetris.unity
+    guid: 200d02f55096fba4794023484bbddb5e
   m_configObjects: {}

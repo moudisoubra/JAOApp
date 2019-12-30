@@ -10,28 +10,35 @@ public class MoveBlock : MonoBehaviour
     public static int height = 32;
     public static int width = 13;
     public static Transform[,] grid = new Transform[width, height];
+    public GameObject spawner;
+    public bool spawn;
+    public TetrisSpawner tsScript;
+    public Swipe swipeControls;
     // Start is called before the first frame update
     void Start()
     {
-
+        spawn = true;
+        spawner = FindObjectOfType<TetrisSpawner>().gameObject;
+        tsScript = FindObjectOfType<TetrisSpawner>();
+        swipeControls = FindObjectOfType<Swipe>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.A) || swipeControls.SwipeLeft)
         {
             MoveLeft();
         }
-        if (Input.GetKeyDown(KeyCode.D))
+        if (Input.GetKeyDown(KeyCode.D) || swipeControls.SwipeRight)
         {
             MoveRight();
         }
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.W) || swipeControls.Tap)
         {
             RotateTetris();
         }
-        if (Input.GetKey(KeyCode.S))
+        if (Input.GetKey(KeyCode.S) || swipeControls.SwipeDown)
         {
             fallTime = fallTime / 10;
         }
@@ -78,11 +85,26 @@ public class MoveBlock : MonoBehaviour
         transform.position += new Vector3(0, -1, 0);
         if (!ValidMove())
         {
-            transform.position -= new Vector3(0, -1, 0);
-            AddToGrid();
-            CheckForLines();
-            this.enabled = false;
-            FindObjectOfType<TetrisSpawner>().SpawnBlock();
+            foreach (Transform child in transform)
+            {
+                int Y = Mathf.RoundToInt(child.transform.position.y);
+
+                if (Y >= spawner.transform.position.y)
+                {
+                    Debug.Log("Game Over");
+                    tsScript.spawn = false;
+                    spawn = false;
+                    this.enabled = false;
+                }
+            }
+            if (spawn && tsScript.spawn)
+            {
+                transform.position -= new Vector3(0, -1, 0);
+                AddToGrid();
+                CheckForLines();
+                this.enabled = false;
+                FindObjectOfType<TetrisSpawner>().SpawnBlock();
+            }
         }
         previousTime = Time.time;
     }
@@ -119,6 +141,7 @@ public class MoveBlock : MonoBehaviour
             Destroy(grid[j, i].gameObject);
             grid[j, i] = null;
         }
+        tsScript.scoreNum += 25;
     }
 
     void RowDown(int i)

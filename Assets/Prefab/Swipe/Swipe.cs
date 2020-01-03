@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class Swipe : MonoBehaviour
 {
-    private bool tap, swipeLeft, swipeRight, swipeUp, swipeDown;
+    private bool tap, longTap, swipeLeft, swipeRight, swipeUp, swipeDown;
     private bool isDragging = false;
     public bool canTap = false;
     private Vector2 startTouch, swipeDelta;
+    public float timer = 0;
 
     private void Update()
     {
@@ -26,7 +27,7 @@ public class Swipe : MonoBehaviour
 
         //---------------------------------Mobile Input----------------------------------------//
 
-        if (Input.touches.Length > 0)
+        if (Input.touchCount > 0)
         {
             if (Input.touches[0].phase == TouchPhase.Began)
             {
@@ -45,7 +46,7 @@ public class Swipe : MonoBehaviour
 
         if (isDragging)
         {
-            if (Input.touches.Length > 0)
+            if (Input.touchCount > 0)
             {
                 swipeDelta = Input.touches[0].position - startTouch;
             }
@@ -54,15 +55,12 @@ public class Swipe : MonoBehaviour
                 swipeDelta = (Vector2)Input.mousePosition - startTouch;
                 Debug.Log(swipeDelta.magnitude);
             }
-
-
-
         }
 
         //-------------------------------Swiping if Distance is great enough------------------//
         if (swipeDelta.magnitude < 10 && canTap)
         {
-            if (Input.touches.Length > 0)
+            if (Input.touchCount > 0)
             {
                 Debug.Log("Touch is Running");
                 if (Input.touches[0].phase == TouchPhase.Ended || Input.touches[0].phase == TouchPhase.Canceled)
@@ -78,7 +76,7 @@ public class Swipe : MonoBehaviour
                 Reset();
             }
         }
-        else if (swipeDelta.magnitude > 125)
+        else if (swipeDelta.magnitude > 25)
         {
             canTap = false;
             float x = swipeDelta.x;
@@ -120,8 +118,10 @@ public class Swipe : MonoBehaviour
     }
     public Vector2 SwipeDelta {  get { return swipeDelta; } }
     public bool Tap { get { return tap; } }
+    public bool LongTap { get { return longTap; } }
     public bool SwipeLeft { get { return swipeLeft; } }
     public bool SwipeRight { get { return swipeRight; } }
     public bool SwipeUp { get { return swipeUp; } }
     public bool SwipeDown { get { return swipeDown; } }
+    public float SwipeDeltas { get { return swipeDelta.magnitude; } }
 }

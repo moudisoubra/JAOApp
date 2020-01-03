@@ -7,6 +7,7 @@ public class TetrisSpawner : MonoBehaviour
 {
     public GameObject[] blocks;
     public GameObject[] blockFrames;
+    public GameObject currentBlock;
     public GameObject nextBlock;
     public GameObject gameOver;
     public GameObject endButton;
@@ -16,17 +17,24 @@ public class TetrisSpawner : MonoBehaviour
     public float timeNum;
     public int nextBlockNum;
     public bool spawn;
+    public bool firstSpawn;
     void Start()
     {
         spawn = true;
-        nextBlockNum = Random.Range(0, blocks.Length);
-        nextBlock = blocks[nextBlockNum];
-        SpawnBlock();
+
+
     }
 
 
     void Update()
     {
+        if (firstSpawn)
+        {
+            nextBlockNum = Random.Range(0, blocks.Length);
+            nextBlock = blocks[nextBlockNum];
+            SpawnBlock();
+            firstSpawn = false;
+        }
         scoreText.text = scoreNum.ToString("0");
         timeText.text = timeNum.ToString("00");
 
@@ -57,6 +65,23 @@ public class TetrisSpawner : MonoBehaviour
             gameOver.SetActive(true);
             endButton.SetActive(true);
         }
+    }
+
+    public void StartGame()
+    {
+        firstSpawn = true;
+    }
+    public void MoveRight()
+    {
+        currentBlock.GetComponent<MoveBlock>().MoveRight();
+    }
+    public void MoveLeft()
+    {
+        currentBlock.GetComponent<MoveBlock>().MoveLeft();
+    }
+    public void MoveDown()
+    {
+        currentBlock.GetComponent<MoveBlock>().fallTime = currentBlock.GetComponent<MoveBlock>().fallTime / 10;
     }
 
     public void SpawnBlock()

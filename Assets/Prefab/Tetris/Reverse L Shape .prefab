@@ -205,10 +205,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9afa252d451fc8a428c4957153a4ebcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  math: {fileID: 0}
   rotationPoint: {x: 0, y: 0, z: 0}
   previousTime: 0
-  fallTime: 0.8
-  sphereRadius: 1
+  fallTime: 0.2
+  originalFalltime: 0.2
+  spawner: {fileID: 0}
+  spawn: 0
+  goDown: 0
+  tsScript: {fileID: 0}
+  swipeControls: {fileID: 0}
 --- !u!1 &1933930393145913333
 GameObject:
   m_ObjectHideFlags: 0

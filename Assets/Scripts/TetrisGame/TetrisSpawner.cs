@@ -83,6 +83,10 @@ public class TetrisSpawner : MonoBehaviour
     {
         currentBlock.GetComponent<MoveBlock>().fallTime = currentBlock.GetComponent<MoveBlock>().fallTime / 10;
     }
+public void Rotate()
+{
+    currentBlock.GetComponent<MoveBlock>().RotateTetris();
+}
 
     public void SpawnBlock()
     {

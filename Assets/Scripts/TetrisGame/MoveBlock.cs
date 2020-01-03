@@ -32,19 +32,19 @@ public class MoveBlock : MonoBehaviour
     {
             math.text = Mathf.RoundToInt(swipeControls.SwipeDeltas).ToString();
         
-        if (Input.GetKeyDown(KeyCode.A) || swipeControls.SwipeLeft)
+        if (Input.GetKeyDown(KeyCode.A))
         {
             MoveLeft();
         }
-        if (Input.GetKeyDown(KeyCode.D) || swipeControls.SwipeRight)
+        if (Input.GetKeyDown(KeyCode.D))
         {
             MoveRight();
         }
-        if (Input.GetKeyDown(KeyCode.W) || swipeControls.Tap)
+        if (Input.GetKeyDown(KeyCode.W))
         {
             RotateTetris();
         }
-        if (Input.GetKey(KeyCode.S) || swipeControls.SwipeDown)
+        if (Input.GetKey(KeyCode.S))
         {
             fallTime = fallTime / 10;
         }

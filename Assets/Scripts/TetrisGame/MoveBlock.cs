@@ -8,7 +8,8 @@ public class MoveBlock : MonoBehaviour
     public Text math;
     public Vector3 rotationPoint;
     public float previousTime;
-    public float fallTime = 0.8f;
+    public float fallTime;
+    public float originalFallTime;
     public static int height = 32;
     public static int width = 13;
     public static Transform[,] grid = new Transform[width, height];
@@ -32,26 +33,26 @@ public class MoveBlock : MonoBehaviour
     {
             math.text = Mathf.RoundToInt(swipeControls.SwipeDeltas).ToString();
         
-        if (Input.GetKeyDown(KeyCode.A) || swipeControls.SwipeLeft)
+        if (Input.GetKeyDown(KeyCode.A))
         {
             MoveLeft();
         }
-        if (Input.GetKeyDown(KeyCode.D) || swipeControls.SwipeRight)
+        if (Input.GetKeyDown(KeyCode.D))
         {
             MoveRight();
         }
-        if (Input.GetKeyDown(KeyCode.W) || swipeControls.Tap)
+        if (Input.GetKeyDown(KeyCode.W))
         {
             RotateTetris();
         }
-        if (Input.GetKey(KeyCode.S) || swipeControls.SwipeDown)
-        {
-            fallTime = fallTime / 10;
-        }
-        else
-        {
-            fallTime = 0.8f;
-        }
+        //if (Input.GetKey(KeyCode.S))
+        //{
+        //    fallTime = fallTime / 10;
+        //}
+        //else
+        //{
+        //    fallTime = originalFallTime;
+        //}
 
         if (Time.time - previousTime > fallTime)
         {

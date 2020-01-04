@@ -71,6 +71,10 @@ public class TetrisSpawner : MonoBehaviour
     {
         firstSpawn = true;
     }
+    public void Rotate()
+    {
+        currentBlock.GetComponent<MoveBlock>().RotateTetris();
+    }
     public void MoveRight()
     {
         currentBlock.GetComponent<MoveBlock>().MoveRight();
@@ -82,6 +86,10 @@ public class TetrisSpawner : MonoBehaviour
     public void MoveDown()
     {
         currentBlock.GetComponent<MoveBlock>().fallTime = currentBlock.GetComponent<MoveBlock>().fallTime / 10;
+    }
+    public void StopMoveDown()
+    {
+        currentBlock.GetComponent<MoveBlock>().fallTime = currentBlock.GetComponent<MoveBlock>().originalFallTime;
     }
 
     public void SpawnBlock()

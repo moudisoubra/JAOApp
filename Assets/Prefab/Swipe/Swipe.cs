@@ -7,7 +7,7 @@ public class Swipe : MonoBehaviour
     private bool tap, longTap, swipeLeft, swipeRight, swipeUp, swipeDown;
     private bool isDragging = false;
     public bool canTap = false;
-    private Vector2 startTouch, swipeDelta;
+    private Vector2 startTouch, swipeDelta, touchDelta;
     public float timer = 0;
 
     private void Update()
@@ -31,38 +31,43 @@ public class Swipe : MonoBehaviour
         {
             if (Input.touches[0].phase == TouchPhase.Began)
             {
+                Debug.Log("IS DRAGGING");
                 isDragging = true;
                 canTap = true;
                 startTouch = Input.touches[0].position;
             }
             else if (Input.touches[0].phase == TouchPhase.Ended || Input.touches[0].phase == TouchPhase.Canceled)
             {
-                Reset();
+                swipeDelta = Input.touches[0].position - startTouch;
+
+                Debug.Log("First Touch: " + swipeDelta.magnitude);
+                //Reset();
             }
+
         }
 
         //--------------------------------Calculate Distance-----------------------------------//
-        swipeDelta = Vector2.zero;
+        //swipeDelta = Vector2.zero;
 
         if (isDragging)
         {
             if (Input.touchCount > 0)
             {
-                swipeDelta = Input.touches[0].position - startTouch;
+                //swipeDelta = Input.touches[0].position - startTouch;
+                //Debug.Log("Touch: " + swipeDelta.magnitude);
             }
             else if(Input.GetMouseButton(0))
             {
                 swipeDelta = (Vector2)Input.mousePosition - startTouch;
-                Debug.Log(swipeDelta.magnitude);
             }
         }
 
         //-------------------------------Swiping if Distance is great enough------------------//
-        if (swipeDelta.magnitude < 10 && canTap)
+        if (swipeDelta.magnitude < 5 && canTap )
         {
             if (Input.touchCount > 0)
             {
-                Debug.Log("Touch is Running");
+                //Debug.Log("Touch is Running");
                 if (Input.touches[0].phase == TouchPhase.Ended || Input.touches[0].phase == TouchPhase.Canceled)
                 {
                     tap = true;
@@ -78,6 +83,7 @@ public class Swipe : MonoBehaviour
         }
         else if (swipeDelta.magnitude > 25)
         {
+            Debug.Log("MOVING DIRECTION");
             canTap = false;
             float x = swipeDelta.x;
             float y = swipeDelta.y;

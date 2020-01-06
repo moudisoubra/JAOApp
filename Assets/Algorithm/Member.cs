@@ -4,6 +4,22 @@ using UnityEngine;
 
 public class Member
 {
-    public string gender;
-    public string occupation;
+    public Gender gender;
+    public Occupation occupation;
+}
+
+public class Gender
+{
+    public int gender;
+}
+
+public class Occupation
+{
+    public string name;
+}
+
+public class OccupationNumber
+{
+    public string name;
+    public int count;
 }

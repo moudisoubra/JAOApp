@@ -649,6 +649,8 @@ MonoBehaviour:
   - {fileID: 1773807919}
   firstText: {fileID: 105291412}
   endText: {fileID: 92604042}
+  rightButton: {fileID: 1752928326}
+  leftButton: {fileID: 1898021653}
   speed: 0.01
 --- !u!1 &641996334
 GameObject:

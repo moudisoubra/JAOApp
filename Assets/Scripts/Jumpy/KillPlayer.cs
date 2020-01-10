@@ -9,6 +9,8 @@ public class KillPlayer : MonoBehaviour
 
     public GameObject firstText;
     public GameObject endText;
+    public GameObject rightButton;
+    public GameObject leftButton;
 
     public float speed;
     // Start is called before the first frame update
@@ -24,6 +26,8 @@ public class KillPlayer : MonoBehaviour
         {
             firstText.transform.position = Vector3.Lerp(firstText.transform.position, endText.transform.position, speed);
             firstText.transform.localScale = Vector3.Lerp(firstText.transform.localScale, endText.transform.localScale, speed);
+            rightButton.SetActive(false);
+            leftButton.SetActive(false);
         }
     }
 

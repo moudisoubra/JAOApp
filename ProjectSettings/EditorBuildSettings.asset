@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Jumpy.unity
     guid: af6318bf6af191342b040e63dd87e9b5
+  - enabled: 1
+    path: Assets/Scenes/StackGame.unity
+    guid: 7ac865b7c80b4a944856769ac217b434
   m_configObjects: {}

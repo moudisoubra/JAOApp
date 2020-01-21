@@ -9,6 +9,7 @@ public class Main : MonoBehaviour
     public GameObject currentCube;
     public GameObject lastCube;
     public GameObject endText;
+    public GameObject tapp;
     public Text score;
     public int level;
     public bool done;
@@ -45,10 +46,17 @@ public class Main : MonoBehaviour
 
         if (swipe.Tap)
         {
+            // score.text = level.ToString("0");
+            // currentCube.GetComponent<MeshRenderer>().material = oldMaterial;
+            // NewBlock();
+        }
+    }
+
+    public void Tappity()
+    {
             score.text = level.ToString("0");
             currentCube.GetComponent<MeshRenderer>().material = oldMaterial;
             NewBlock();
-        }
     }
 
     public void NewBlock()
@@ -69,6 +77,7 @@ public class Main : MonoBehaviour
                 done = true;
                 endText.gameObject.SetActive(true);
                 endText.GetComponentInChildren<Text>().text = "Your Score: " + level;
+                tapp.SetActive(false);
             }
            
 

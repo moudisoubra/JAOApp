@@ -16,6 +16,7 @@ public class Flap : MonoBehaviour
     public TappyObstacleSpawner script;
     public GameObject firstText;
     public GameObject endText;
+    public GameObject stopTap;
     void Start()
     {
         startTapping = true;
@@ -32,17 +33,23 @@ public class Flap : MonoBehaviour
         {
             endButton.SetActive(true);
         }
-        if (swipe.Tap && startTapping)
-        {
-            rb.velocity = Vector2.up * velocity;
-        }
+        // if (swipe.Tap && startTapping)
+        // {
+        //     rb.velocity = Vector2.up * velocity;
+        // }
         scoreText.text = points.ToString("0");
 
         if (!script.canSpawn)
         {
             firstText.transform.position = Vector3.Lerp(firstText.transform.position, endText.transform.position, speed);
             firstText.transform.localScale = Vector3.Lerp(firstText.transform.localScale, endText.transform.localScale, speed);
+            stopTap.SetActive(false);
         }
+    }
+
+    public void Flappity()
+    {
+        rb.velocity = Vector2.up * velocity;
     }
 
     private void OnTriggerEnter2D(Collider2D other)

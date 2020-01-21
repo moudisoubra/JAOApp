@@ -50,11 +50,10 @@ MonoBehaviour:
   math: {fileID: 0}
   rotationPoint: {x: 0.5, y: 0.5, z: 0}
   previousTime: 0
-  fallTime: 0.2
-  originalFalltime: 0.2
+  fallTime: 0.4
+  originalFallTime: 0.2
   spawner: {fileID: 0}
   spawn: 0
-  goDown: 0
   tsScript: {fileID: 0}
   swipeControls: {fileID: 0}
 --- !u!1 &5856674313895988568

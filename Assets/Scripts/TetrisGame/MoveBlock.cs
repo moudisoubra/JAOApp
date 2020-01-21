@@ -9,19 +9,17 @@ public class MoveBlock : MonoBehaviour
     public Vector3 rotationPoint;
     public float previousTime;
     public float fallTime;
-    public float originalFalltime;
+    public float originalFallTime;
     public static int height = 32;
     public static int width = 13;
     public static Transform[,] grid = new Transform[width, height];
     public GameObject spawner;
     public bool spawn;
-    public bool goDown;
     public TetrisSpawner tsScript;
     public Swipe swipeControls;
     // Start is called before the first frame update
     void Start()
     {
-        goDown = false;
         math = GameObject.FindGameObjectWithTag("Math").GetComponent<Text>();
         spawn = true;
         spawner = FindObjectOfType<TetrisSpawner>().gameObject;
@@ -33,44 +31,34 @@ public class MoveBlock : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-          math.text = Mathf.RoundToInt(swipeControls.SwipeDeltas).ToString();
-
+            math.text = Mathf.RoundToInt(swipeControls.SwipeDeltas).ToString();
+        
         if (Input.GetKeyDown(KeyCode.A))
         {
-            Debug.Log("Go Left");
             MoveLeft();
         }
         if (Input.GetKeyDown(KeyCode.D))
         {
-            Debug.Log("GO Right");
             MoveRight();
         }
         if (Input.GetKeyDown(KeyCode.W))
         {
             RotateTetris();
         }
-        if (Input.GetKey(KeyCode.S) || goDown)
-        {
-            fallTime = fallTime / 10;
-        }
-        else
-        {
-            fallTime = originalFalltime;
-        }
+        //if (Input.GetKey(KeyCode.S))
+        //{
+        //    fallTime = fallTime / 10;
+        //}
+        //else
+        //{
+        //    fallTime = originalFallTime;
+        //}
 
         if (Time.time - previousTime > fallTime)
         {
             FallingTetris();
         }
         CheckForLines();
-    }
-    public void GoDown()
-    {
-        goDown = true;
-    }
-    public void DontGoDown()
-    {
-        goDown = false;
     }
     public void MoveRight()
     {

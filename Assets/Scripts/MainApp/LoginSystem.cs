@@ -8,15 +8,17 @@ using TMPro;
 public class LoginSystem : MonoBehaviour
 {
     public User user;
-
-    public InputField userName;
-    public InputField password;
+    
+    public TMP_InputField userName;
+    public TMP_InputField password;
     public TextMeshProUGUI connection;
+    public AppColorPicker acpScript;
+    public ChangePanel cpScript;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        acpScript = GetComponent<AppColorPicker>();
     }
 
     // Update is called once per frame
@@ -70,10 +72,14 @@ public class LoginSystem : MonoBehaviour
                 "user login: " + userData.user_Login);
 
                 user = userData;
+                acpScript.SetColorNumber(user.user_House);
+                cpScript.ChangeToPanel("Home");
+
             }
 
 
         }
+
     }
 
     [System.Serializable]

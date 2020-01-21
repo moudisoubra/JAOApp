@@ -40,7 +40,6 @@ public class EnableChest : MonoBehaviour
                 giveCoins = true;
                 button1.SetActive(false);
                 button2.SetActive(false);
-                buttonEnd.SetActive(true);
             }
             else
             {

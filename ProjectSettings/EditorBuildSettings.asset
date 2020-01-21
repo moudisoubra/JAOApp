@@ -26,4 +26,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Flappy.unity
     guid: 3f9b50a0c90690747b59b0a2e852b181
+  - enabled: 1
+    path: Assets/Scenes/Slasher.unity
+    guid: 2034200ca9fd40244a904a459757009d
+  - enabled: 1
+    path: Assets/Scenes/Jumpy.unity
+    guid: af6318bf6af191342b040e63dd87e9b5
   m_configObjects: {}

@@ -19,9 +19,5 @@ public class InheritedTeam : Team
         totalCount.text = totalMembers.ToString();
         maleCount.text = numberOfMales.ToString();
         femaleCount.text = numberOfFemales.ToString();
-        oA.text = numberOccupationA.ToString();
-        oB.text = numberOccupationB.ToString();
-        oC.text = numberOccupationC.ToString();
-        oD.text = numberOccupationD.ToString();
     }
 }

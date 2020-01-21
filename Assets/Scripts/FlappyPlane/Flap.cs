@@ -8,16 +8,21 @@ public class Flap : MonoBehaviour
     public Swipe swipe;
     public Rigidbody2D rb;
     public float velocity = 1;
+    public float speed;
     public int points;
     public bool startTapping;
     public Text scoreText;
     public GameObject endButton;
-
+    public TappyObstacleSpawner script;
+    public GameObject firstText;
+    public GameObject endText;
     void Start()
     {
         startTapping = true;
         rb = GetComponent<Rigidbody2D>();
         swipe = FindObjectOfType<Swipe>();
+        script = FindObjectOfType<TappyObstacleSpawner>();
+
     }
 
     // Update is called once per frame
@@ -32,6 +37,12 @@ public class Flap : MonoBehaviour
             rb.velocity = Vector2.up * velocity;
         }
         scoreText.text = points.ToString("0");
+
+        if (!script.canSpawn)
+        {
+            firstText.transform.position = Vector3.Lerp(firstText.transform.position, endText.transform.position, speed);
+            firstText.transform.localScale = Vector3.Lerp(firstText.transform.localScale, endText.transform.localScale, speed);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -46,6 +57,7 @@ public class Flap : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Obstacle"))
         {
+            script.canSpawn = false;
             startTapping = false;
         }
     }

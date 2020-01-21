@@ -8,6 +8,7 @@ public class ChestController : MonoBehaviour
     public GameObject chestPlaceholder;
     public GameObject openChest;
     public GameObject coin;
+    public GameObject endButton;
     public float speed;
     public float waitTime;
     public float coinsEnd;
@@ -62,5 +63,6 @@ public class ChestController : MonoBehaviour
             yield return new WaitForSeconds(waitTime);
 
         }
+        endButton.SetActive(true);
     }
 }

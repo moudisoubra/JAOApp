@@ -84,8 +84,14 @@ public class GetPDFS : MonoBehaviour
                 print("PDF Name: " + test.pdfName +
                 "PDF FullName: " + test.pdfFullName);
             
-
-                pdfList.pdf.Add(test);
+                if (pdfNames.Contains(test.pdfName))
+                {
+                    Debug.Log("PDF Already Created");
+                }
+                else
+                {
+                    pdfList.pdf.Add(test);
+                }
             }
 
             createBooks = true;

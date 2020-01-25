@@ -22,7 +22,7 @@ public class LoginSystem : MonoBehaviour
     void Start()
     {
         acpScript = GetComponent<AppColorPicker>();
-        StartCoroutine(GetRequestPic("https://testserversoubra.herokuapp.com/showPicture/example"));
+        StartCoroutine(GetRequestPic("https://testserversoubra.herokuapp.com/showPicture/123"));
     }
 
     // Update is called once per frame

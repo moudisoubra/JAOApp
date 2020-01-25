@@ -39,7 +39,7 @@ public class GetRecruits : MonoBehaviour
 
             createRecruits = true;
             doneCreatingRecruits = false;
-            StartCoroutine(GetRequest("https://testserversoubra.herokuapp.com/listAllBlogPosts"));
+            StartCoroutine(GetRequest("https://testserversoubra.herokuapp.com/listAllRecruits"));
 
             timer = 0;
         }
@@ -58,13 +58,14 @@ public class GetRecruits : MonoBehaviour
                     GameObject temp = Instantiate(recruitPrefab, parent.transform);
                     RecruitComponents tempR = temp.GetComponent<RecruitComponents>();
 
+                    tempR.ID = Rlist.recruit[i].recruit_ID;
                     tempR.name.text = Rlist.recruit[i].recruit_Name;
                     tempR.nationality.text = Rlist.recruit[i].recruit_Nationality;
                     tempR.property.text = Rlist.recruit[i].recruit_Property;
                     tempR.department.text = Rlist.recruit[i].recruit_Department;
                     tempR.position.text = Rlist.recruit[i].recruit_Position;
                     tempR.doj.text = Rlist.recruit[i].recruit_DOJ;
-                    
+
                     temp.transform.SetParent(parent);
 
                     recruitsAdded.Add(Rlist.recruit[i].recruit_ID);

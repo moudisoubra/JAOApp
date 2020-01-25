@@ -8,7 +8,10 @@ using TMPro;
 public class LoginSystem : MonoBehaviour
 {
     public User user;
-    
+    public pics pic;
+    public RawImage RI;
+    public Texture2D tex;
+    public Texture2D webTex;
     public TMP_InputField userName;
     public TMP_InputField password;
     public TextMeshProUGUI connection;
@@ -19,6 +22,7 @@ public class LoginSystem : MonoBehaviour
     void Start()
     {
         acpScript = GetComponent<AppColorPicker>();
+        StartCoroutine(GetRequestPic("https://testserversoubra.herokuapp.com/showPicture/example"));
     }
 
     // Update is called once per frame
@@ -82,6 +86,19 @@ public class LoginSystem : MonoBehaviour
 
     }
 
+    
+    IEnumerator GetRequestPic(string uri)
+    {
+        Debug.Log("Pic Coroutine Started");
+        tex = new Texture2D(4, 4, TextureFormat.DXT1, false);
+
+        using (WWW www = new WWW(uri))
+        {
+            yield return www;
+            www.LoadImageIntoTexture(tex);
+        }
+    }
+    
     [System.Serializable]
     public class User
     {
@@ -92,5 +109,12 @@ public class LoginSystem : MonoBehaviour
         public string user_Seniority;
         public int user_House;
         public string user_Login;
+    }
+
+    [System.Serializable]
+    public class pics
+    {
+        public string imgName;
+        public RawImage img;
     }
 }

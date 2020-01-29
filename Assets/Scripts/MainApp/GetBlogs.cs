@@ -14,6 +14,7 @@ public class GetBlogs : MonoBehaviour
     public bool submittingIdea;
     public GameObject blogPrefab;
     public GameObject submissionPanel;
+    public List<GameObject> allBlogs;
     public Transform parent;
     public List<string> blogsAdded;
 
@@ -54,7 +55,7 @@ public class GetBlogs : MonoBehaviour
 
         if (createBlogs && !doneCreatingBlogs)
         {
-            Debug.Log(blogList.blog.Count);
+            //Debug.Log(blogList.blog.Count);
             for (int i = 0; i < blogList.blog.Count; i++)
             {
                 if (blogsAdded.Contains(blogList.blog[i].blogID))
@@ -64,10 +65,12 @@ public class GetBlogs : MonoBehaviour
                 else
                 {
                     GameObject temp = Instantiate(blogPrefab, parent.transform);
+                    allBlogs.Add(temp);
                     temp.GetComponent<TextBoxComponents>().blogName.text = blogList.blog[i].userName;
                     temp.GetComponent<TextBoxComponents>().blogContent.text = blogList.blog[i].blogContent;
                     temp.transform.SetParent(parent);
                     blogsAdded.Add(blogList.blog[i].blogID);
+                    SortChildren();
                 }
             }
 
@@ -75,27 +78,33 @@ public class GetBlogs : MonoBehaviour
             doneCreatingBlogs = true;
         }
     }
-
+    public void SortChildren()
+    {
+        for (int i = 0; i < allBlogs.Count; i++)
+        {
+            allBlogs[i].transform.SetSiblingIndex(allBlogs.Count - i);
+        }
+    }
     IEnumerator GetRequest(string uri)
     {
-        Debug.Log("Coroutine Started");
+        //Debug.Log("Coroutine Started");
         using (UnityWebRequest webRequest = UnityWebRequest.Get(uri))
         {
-            Debug.Log("Here");
+            //Debug.Log("Here");
             // Request and wait for the desired page.
             yield return webRequest.SendWebRequest();
 
             BlogList data = JsonUtility.FromJson<BlogList>(webRequest.downloadHandler.text);
-            Debug.Log(webRequest.downloadHandler.text);
+            //Debug.Log(webRequest.downloadHandler.text);
 
             foreach (blog test in data.blog)
             {
-                Debug.Log("Here Now");
+                //Debug.Log("Here Now");
 
-                print("Blog User ID: " + test.userID +
-                      "Blog Made By: " + test.userName +
-                      "Blog Content: " + test.blogContent +
-                      "Blog Unique ID: " + test.blogID);
+                //print("Blog User ID: " + test.userID +
+                //      "Blog Made By: " + test.userName +
+                //      "Blog Content: " + test.blogContent +
+                //      "Blog Unique ID: " + test.blogID);
             
                 if (!blogsAdded.Contains(test.blogID))
                 {   

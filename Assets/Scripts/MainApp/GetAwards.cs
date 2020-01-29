@@ -4,30 +4,29 @@ using UnityEngine;
 using UnityEngine.Networking;
 using TMPro;
 using UnityEngine.UI;
-
-public class GetRecruits : MonoBehaviour
+public class GetAwards : MonoBehaviour
 {
 
     public float timer;
     public float timerDuration;
-    public RecruitList Rlist;
+    public AwardList AList;
     public bool createRecruits;
     public bool doneCreatingRecruits;
     public bool submittingIdea;
     public GameObject recruitPrefab;
     public List<GameObject> allRecruits;
     public Transform parent;
-    public List<string> recruitsAdded;
-    public 
+    public List<string> awardsAdded;
+    public
 
     // Start is called before the first frame update
     void Start()
     {
-        recruitsAdded.Clear();
+        awardsAdded.Clear();
         timer = 0;
         createRecruits = false;
         doneCreatingRecruits = false;
-        StartCoroutine(GetRequest("https://testserversoubra.herokuapp.com/listAllRecruits"));
+        StartCoroutine(GetRequest("https://testserversoubra.herokuapp.com/listAllAwardPosts"));
     }
 
     // Update is called once per frame
@@ -41,17 +40,17 @@ public class GetRecruits : MonoBehaviour
 
             createRecruits = true;
             doneCreatingRecruits = false;
-            StartCoroutine(GetRequest("https://testserversoubra.herokuapp.com/listAllRecruits"));
+            StartCoroutine(GetRequest("https://testserversoubra.herokuapp.com/listAllAwardPosts"));
 
             timer = 0;
         }
 
         if (createRecruits && !doneCreatingRecruits)
         {
-            Debug.Log(Rlist.recruit.Count);
-            for (int i = 0; i < Rlist.recruit.Count; i++)
+            Debug.Log(AList.award.Count);
+            for (int i = 0; i < AList.award.Count; i++)
             {
-                if (recruitsAdded.Contains(Rlist.recruit[i].recruit_ID))
+                if (awardsAdded.Contains(AList.award[i].userID))
                 {
                     Debug.Log("Recruit Already Created");
                 }
@@ -59,19 +58,15 @@ public class GetRecruits : MonoBehaviour
                 {
                     GameObject temp = Instantiate(recruitPrefab, parent.transform);
                     allRecruits.Add(temp);
-                    RecruitComponents tempR = temp.GetComponent<RecruitComponents>();
+                    AwardComponents tempR = temp.GetComponent<AwardComponents>();
 
-                    tempR.ID = Rlist.recruit[i].recruit_ID;
-                    tempR.name.text = Rlist.recruit[i].recruit_Name;
-                    tempR.nationality.text = Rlist.recruit[i].recruit_Nationality;
-                    tempR.property.text = Rlist.recruit[i].recruit_Property;
-                    tempR.department.text = Rlist.recruit[i].recruit_Department;
-                    tempR.position.text = Rlist.recruit[i].recruit_Position;
-                    tempR.doj.text = Rlist.recruit[i].recruit_DOJ;
+                    tempR.ID = AList.award[i].userID;
+                    tempR.awardContent.text = AList.award[i].awardContent;
+
 
                     temp.transform.SetParent(parent);
 
-                    recruitsAdded.Add(Rlist.recruit[i].recruit_ID);
+                    awardsAdded.Add(AList.award[i].userID);
                     SortChildren();
                 }
             }
@@ -96,16 +91,16 @@ public class GetRecruits : MonoBehaviour
             // Request and wait for the desired page.
             yield return webRequest.SendWebRequest();
 
-            RecruitList data = JsonUtility.FromJson<RecruitList>(webRequest.downloadHandler.text);
+            AwardList data = JsonUtility.FromJson<AwardList>(webRequest.downloadHandler.text);
             Debug.Log(webRequest.downloadHandler.text);
 
-            foreach (Recruit test in data.recruit)
+            foreach (Award test in data.award)
             {
                 Debug.Log("Here Now");
 
-                if (!recruitsAdded.Contains(test.recruit_ID))
+                if (!awardsAdded.Contains(test.awardID))
                 {
-                    Rlist.recruit.Add(test);
+                    AList.award.Add(test);
                 }
             }
 
@@ -114,20 +109,16 @@ public class GetRecruits : MonoBehaviour
     }
 
     [System.Serializable]
-    public class Recruit
+    public class Award
     {
-        public string recruit_ID;
-        public string recruit_Name;
-        public string recruit_Nationality;
-        public string recruit_Department;
-        public string recruit_Position;
-        public string recruit_DOJ;
-        public string recruit_Property;
+        public string userID;
+        public string awardContent;
+        public string awardID;
     }
 
     [System.Serializable]
-    public class RecruitList
+    public class AwardList
     {
-        public List<Recruit> recruit;
+        public List<Award> award;
     }
 }

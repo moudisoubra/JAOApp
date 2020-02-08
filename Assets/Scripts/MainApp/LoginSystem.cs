@@ -20,12 +20,32 @@ public class LoginSystem : MonoBehaviour
     public ChangePanel cpScript;
     public string panelName;
 
+    public string storedUserName;
+    public string storedPassword;
+    public GameObject login;
+    public GameObject noLogin;
+
     // Start is called before the first frame update
     void Start()
     {
         acpScript = GetComponent<AppColorPicker>();
         //StartCoroutine(GetRequestPic("https://testserversoubra.herokuapp.com/showPicture/123"));
         //StartCoroutine(GetRequest("https://testserversoubra.herokuapp.com/Login/Soubra/123"));
+
+        storedPassword = PlayerPrefs.GetString("Password");
+        storedUserName = PlayerPrefs.GetString("UserName");
+
+        if (storedUserName != null && storedPassword != null)
+        {
+            login.SetActive(true);
+            noLogin.SetActive(false);
+            StartCoroutine(GetRequest("https://testserversoubra.herokuapp.com/Login/" + storedUserName + "/" + storedPassword));
+        }
+        else
+        {
+            login.SetActive(false);
+            noLogin.SetActive(true);
+        }
     }
 
     // Update is called once per frame
@@ -79,6 +99,11 @@ public class LoginSystem : MonoBehaviour
                 "user login: " + userData.user_Login);
 
                 user = userData;
+
+                PlayerPrefs.SetString("UserName", user.user_Name);
+                PlayerPrefs.SetString("Password", user.user_Password);
+
+
                 acpScript.SetColorNumber(user.user_House);
 
                 if(user.resetPassword == "0")
@@ -115,6 +140,7 @@ public class LoginSystem : MonoBehaviour
     public void ChangePassword()
     {
         StartCoroutine(GetRequest("https://testserversoubra.herokuapp.com/ChangePassword/" + user.user_ID + "/" + newPassword.text.ToString()));
+        PlayerPrefs.SetString("Password", newPassword.text.ToString());
     }
     
     IEnumerator GetRequestPic(string uri)

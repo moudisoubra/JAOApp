@@ -424,6 +424,12 @@ MonoBehaviour:
   votedAgainst: 
   totalVoted: 
   ID: 
+  showButtons: 1
+  buttons: {fileID: 6959296659838577766}
+  userID: 
+  lsScript: {fileID: 0}
+  timer: 0
+  timerDuration: 3
 --- !u!1 &6959296659585652958
 GameObject:
   m_ObjectHideFlags: 0

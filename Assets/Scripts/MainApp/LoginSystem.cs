@@ -14,16 +14,18 @@ public class LoginSystem : MonoBehaviour
     public Texture2D webTex;
     public TMP_InputField userName;
     public TMP_InputField password;
+    public TMP_InputField newPassword;
     public TextMeshProUGUI connection;
     public AppColorPicker acpScript;
     public ChangePanel cpScript;
+    public string panelName;
 
     // Start is called before the first frame update
     void Start()
     {
         acpScript = GetComponent<AppColorPicker>();
         //StartCoroutine(GetRequestPic("https://testserversoubra.herokuapp.com/showPicture/123"));
-        StartCoroutine(GetRequest("https://testserversoubra.herokuapp.com/Login/Soubra/123"));
+        //StartCoroutine(GetRequest("https://testserversoubra.herokuapp.com/Login/Soubra/123"));
     }
 
     // Update is called once per frame
@@ -78,7 +80,17 @@ public class LoginSystem : MonoBehaviour
 
                 user = userData;
                 acpScript.SetColorNumber(user.user_House);
-                cpScript.ChangeToPanel("Home");
+
+                if(user.resetPassword == "0")
+                {
+                    panelName = "ResetPassword";
+                    //cpScript.ChangeToPanel("ResetPassword");
+                }
+                else
+                {
+                    panelName = "Home";
+                    //cpScript.ChangeToPanel("Home");
+                }
 
             }
 
@@ -87,6 +99,23 @@ public class LoginSystem : MonoBehaviour
 
     }
 
+    IEnumerator Change(string uri)
+    {
+        //Debug.Log("Coroutine Started");
+        using (UnityWebRequest webRequest = UnityWebRequest.Get(uri))
+        {
+            //Debug.Log("Here");
+            // Request and wait for the desired page.
+            yield return webRequest.SendWebRequest();
+
+            string data = webRequest.downloadHandler.text;
+        }
+    }
+
+    public void ChangePassword()
+    {
+        StartCoroutine(GetRequest("https://testserversoubra.herokuapp.com/ChangePassword/" + user.user_ID + "/" + newPassword.text.ToString()));
+    }
     
     IEnumerator GetRequestPic(string uri)
     {
@@ -110,6 +139,7 @@ public class LoginSystem : MonoBehaviour
         public string user_Seniority;
         public int user_House;
         public string user_Login;
+        public string resetPassword;
     }
 
     [System.Serializable]

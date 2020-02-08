@@ -18,7 +18,7 @@ public class AppColorPicker : MonoBehaviour
     public int color;
 
     public ChangePanel cpScript;
-
+    public LoginSystem lsScript;
 
 
     
@@ -51,7 +51,8 @@ public class AppColorPicker : MonoBehaviour
                 backgrounds[i].texture = mainColor;
             }
             changeColor = false;
-            cpScript.ChangeToPanel("Home");
+
+            cpScript.ChangeToPanel(lsScript.panelName);
         }
     }
 

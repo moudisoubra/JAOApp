@@ -37,7 +37,7 @@ public class GetRecruits : MonoBehaviour
 
         if (timer > timerDuration && !submittingIdea)
         {
-            Debug.Log("Started Coroutine");
+            //Debug.Log("Started Coroutine");
 
             createRecruits = true;
             doneCreatingRecruits = false;
@@ -48,12 +48,12 @@ public class GetRecruits : MonoBehaviour
 
         if (createRecruits && !doneCreatingRecruits)
         {
-            Debug.Log(Rlist.recruit.Count);
+            //Debug.Log(Rlist.recruit.Count);
             for (int i = 0; i < Rlist.recruit.Count; i++)
             {
                 if (recruitsAdded.Contains(Rlist.recruit[i].recruit_ID))
                 {
-                    Debug.Log("Recruit Already Created");
+                    //Debug.Log("Recruit Already Created");
                 }
                 else
                 {
@@ -89,19 +89,19 @@ public class GetRecruits : MonoBehaviour
     }
     IEnumerator GetRequest(string uri)
     {
-        Debug.Log("Coroutine Started");
+        //Debug.Log("Coroutine Started");
         using (UnityWebRequest webRequest = UnityWebRequest.Get(uri))
         {
-            Debug.Log("Here");
+            //Debug.Log("Here");
             // Request and wait for the desired page.
             yield return webRequest.SendWebRequest();
 
             RecruitList data = JsonUtility.FromJson<RecruitList>(webRequest.downloadHandler.text);
-            Debug.Log(webRequest.downloadHandler.text);
+            //Debug.Log(webRequest.downloadHandler.text);
 
             foreach (Recruit test in data.recruit)
             {
-                Debug.Log("Here Now");
+                //Debug.Log("Here Now");
 
                 if (!recruitsAdded.Contains(test.recruit_ID))
                 {

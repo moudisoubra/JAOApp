@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29a983a0ef2330b419536c578d80b4e7, type: 3}
+  m_Name: Marinara
+  m_EditorClassIdentifier: 
+  values:
+  - {fileID: 11400000, guid: 62259256d0ec5304bbb2759bfa16aeba, type: 2}
+  - {fileID: 11400000, guid: d7b0a43c5a85b684d9c34d17c6b04746, type: 2}
+  - {fileID: 11400000, guid: 8a27dac0be6b702469432cb1ca860f5f, type: 2}

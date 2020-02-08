@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29a983a0ef2330b419536c578d80b4e7, type: 3}
+  m_Name: Colatura Di Alici
+  m_EditorClassIdentifier: 
+  values:
+  - {fileID: 11400000, guid: d241abdee288b3f4484222f24abdfb90, type: 2}
+  - {fileID: 11400000, guid: c3aa11040ca6aa2478917f717fc0268e, type: 2}
+  - {fileID: 11400000, guid: 571a3204a58c8ad4c897c5dcbef626fe, type: 2}
+  - {fileID: 11400000, guid: 1c13863b85a157b4293ebcfeb4e17180, type: 2}
+  - {fileID: 11400000, guid: 9ca7466e9a6170a44bb045ba47ba1086, type: 2}
+  - {fileID: 11400000, guid: 25041c14f00c85d41986ec4405cab047, type: 2}
+  - {fileID: 11400000, guid: 838aa9cb1eeb4f84ab46ef5e0f0ca463, type: 2}
+  - {fileID: 11400000, guid: 0686480a63d80a44083e4662b80476c0, type: 2}

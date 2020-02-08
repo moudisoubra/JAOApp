@@ -44,6 +44,7 @@ public class AwardComponents : MonoBehaviour
         }
 
     }
+
     IEnumerator GetRequest(string uri)
     {
         Debug.Log("Coroutine Started");
@@ -58,14 +59,10 @@ public class AwardComponents : MonoBehaviour
                 User userData = JsonUtility.FromJson<User>(webRequest.downloadHandler.text);
 
             user = userData;
-
-
-            
-
-
         }
 
     }
+
     [System.Serializable]
     public class User
     {

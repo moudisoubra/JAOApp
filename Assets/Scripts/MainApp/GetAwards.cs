@@ -36,7 +36,7 @@ public class GetAwards : MonoBehaviour
 
         if (timer > timerDuration && !submittingIdea)
         {
-            Debug.Log("Started Coroutine");
+            //Debug.Log("Started Coroutine");
 
             createRecruits = true;
             doneCreatingRecruits = false;
@@ -47,12 +47,12 @@ public class GetAwards : MonoBehaviour
 
         if (createRecruits && !doneCreatingRecruits)
         {
-            Debug.Log(AList.award.Count);
+            //Debug.Log(AList.award.Count);
             for (int i = 0; i < AList.award.Count; i++)
             {
                 if (awardsAdded.Contains(AList.award[i].userID))
                 {
-                    Debug.Log("Recruit Already Created");
+                    //Debug.Log("Recruit Already Created");
                 }
                 else
                 {
@@ -84,19 +84,19 @@ public class GetAwards : MonoBehaviour
     }
     IEnumerator GetRequest(string uri)
     {
-        Debug.Log("Coroutine Started");
+        //Debug.Log("Coroutine Started");
         using (UnityWebRequest webRequest = UnityWebRequest.Get(uri))
         {
-            Debug.Log("Here");
+            //Debug.Log("Here");
             // Request and wait for the desired page.
             yield return webRequest.SendWebRequest();
 
             AwardList data = JsonUtility.FromJson<AwardList>(webRequest.downloadHandler.text);
-            Debug.Log(webRequest.downloadHandler.text);
+            //Debug.Log(webRequest.downloadHandler.text);
 
             foreach (Award test in data.award)
             {
-                Debug.Log("Here Now");
+                //Debug.Log("Here Now");
 
                 if (!awardsAdded.Contains(test.awardID))
                 {

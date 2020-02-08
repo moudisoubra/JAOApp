@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29a983a0ef2330b419536c578d80b4e7, type: 3}
+  m_Name: Amarticiana
+  m_EditorClassIdentifier: 
+  values:
+  - {fileID: 11400000, guid: 62259256d0ec5304bbb2759bfa16aeba, type: 2}
+  - {fileID: 11400000, guid: d2b0b8f8022fbfb439fecf5a6a8004d2, type: 2}
+  - {fileID: 11400000, guid: 1a6435c2527669b4c8be6384590b54bb, type: 2}
+  - {fileID: 11400000, guid: 792749ae54ba0a5438ac252acdc97c07, type: 2}
+  - {fileID: 11400000, guid: faba9545aa3a3df47a2eabeb2104e989, type: 2}
+  - {fileID: 11400000, guid: 37f6765f0c0d15643889bfe2958a00fc, type: 2}
+  - {fileID: 11400000, guid: 7ba9e38ef0b08c3429e2b4cac7fa95bc, type: 2}
+  - {fileID: 11400000, guid: d241abdee288b3f4484222f24abdfb90, type: 2}

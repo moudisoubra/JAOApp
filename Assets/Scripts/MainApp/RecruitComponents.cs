@@ -17,6 +17,8 @@ public class RecruitComponents : MonoBehaviour
     public TextMeshProUGUI doj;
     public string ID;
     public bool applyImage;
+    public float timerDuration;
+    public float timer;
 
     public void Start()
     {
@@ -31,6 +33,15 @@ public class RecruitComponents : MonoBehaviour
             ri.texture = tex;
             applyImage = false;
         }
+        // timer += Time.deltaTime;
+        // if (timer > timerDuration)
+        // {
+        //     applyImage = true;
+        //     StartCoroutine(GetRequestPic("https://testserversoubra.herokuapp.com/showPicture/" + ID));
+        //     ri.texture = tex;
+        //     timer = 0;
+        // }
+
     }
     IEnumerator GetRequestPic(string uri)
     {

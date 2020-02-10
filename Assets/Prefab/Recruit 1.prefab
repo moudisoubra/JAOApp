@@ -1037,6 +1037,8 @@ MonoBehaviour:
   doj: {fileID: 4466310007431391000}
   ID: 
   applyImage: 0
+  timerDuration: 5
+  timer: 0
 --- !u!1 &4466310008337535299
 GameObject:
   m_ObjectHideFlags: 0

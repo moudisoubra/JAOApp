@@ -25,17 +25,20 @@ public class LoginSystem : MonoBehaviour
     public GameObject login;
     public GameObject noLogin;
 
+    public bool erasePlayerPrefs;
+
     // Start is called before the first frame update
     void Start()
     {
         acpScript = GetComponent<AppColorPicker>();
         //StartCoroutine(GetRequestPic("https://testserversoubra.herokuapp.com/showPicture/123"));
         //StartCoroutine(GetRequest("https://testserversoubra.herokuapp.com/Login/Soubra/123"));
-
+        
+        Debug.Log(PlayerPrefs.GetString("Password") + " AND " + string.IsNullOrEmpty(storedPassword) );
         storedPassword = PlayerPrefs.GetString("Password");
         storedUserName = PlayerPrefs.GetString("UserName");
 
-        if (storedUserName != null && storedPassword != null)
+        if (!string.IsNullOrEmpty(storedPassword) || !string.IsNullOrEmpty(storedUserName))
         {
             login.SetActive(true);
             noLogin.SetActive(false);
@@ -51,7 +54,12 @@ public class LoginSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(erasePlayerPrefs)
+        {
+            PlayerPrefs.SetString("UserName", null);
+            PlayerPrefs.SetString("Password", null);
+            erasePlayerPrefs = false;
+        }
     }
 
     public void Login()

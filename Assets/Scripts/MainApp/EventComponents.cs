@@ -17,6 +17,8 @@ public class EventComponents : MonoBehaviour
     public LoginSystem lsScript;
     public float timer;
     public float timerDuration;
+    public Event thisEvent;
+
 
     // Start is called before the first frame update
     void Start()
@@ -36,6 +38,8 @@ public class EventComponents : MonoBehaviour
         if (timer > timerDuration)
         {
             StartCoroutine(GetBool("https://testserversoubra.herokuapp.com/CheckArray/" + ID + "/" + userID));
+            StartCoroutine(GetEvent("https://testserversoubra.herokuapp.com/SendEventArray/" + ID));
+
             timer = 0;
         }
     }
@@ -87,11 +91,36 @@ public class EventComponents : MonoBehaviour
         AddToArray();
         Debug.Log("https://testserversoubra.herokuapp.com/AddToPositive/" + ID + "/1");
     }
-
     public void VoteAgainst()
     {
         StartCoroutine(GetRequest("https://testserversoubra.herokuapp.com/AddToNegative/" + ID + "/1"));
         AddToArray();
         Debug.Log("https://testserversoubra.herokuapp.com/AddToNegative/" + ID + "/1");
     }
+
+    IEnumerator GetEvent(string uri)
+    {
+
+        using (UnityWebRequest webRequest = UnityWebRequest.Get(uri))
+        {
+
+            yield return webRequest.SendWebRequest();
+
+            Event data = JsonUtility.FromJson<Event>(webRequest.downloadHandler.text);
+
+            thisEvent = data;
+        }
+    }
+
+    [System.Serializable]
+    public class Event
+    {
+        public string eventName;
+        public string eventDescription;
+        public string totalNumberVotedString;
+        public string numberVotedAgainstString;
+        public string numberVotedForString;
+        public string eventID;
+    }
+
 }

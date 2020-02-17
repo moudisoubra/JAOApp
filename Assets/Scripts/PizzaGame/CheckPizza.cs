@@ -47,6 +47,13 @@ public class CheckPizza : MonoBehaviour
         startGame = true;
     }
 
+    public void StartGame()
+    {
+        startGame = true;
+        endGame = false;
+        endGameStop = false;
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -54,6 +61,11 @@ public class CheckPizza : MonoBehaviour
         no.SetActive(!allCorrectIngredientsOrder);
         if (startGame)
         {
+            playerPizza.Clear();
+            ingredientsAdded.Clear();
+            ingredientsAddedToButtons.Clear();
+            buttonIngredients.Clear();
+
             chosenPizza = allPizzas[Random.Range(0, allPizzas.Count)];
 
             pizzaName.text = chosenPizza.name;

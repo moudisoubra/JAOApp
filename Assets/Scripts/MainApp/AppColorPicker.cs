@@ -10,6 +10,24 @@ public class AppColorPicker : MonoBehaviour
     public RawImage[] backgrounds;
     public RawImage mainHubBack;
 
+    public Sprite[] JobsButtons;
+    public Image JobsButton;
+
+    public Sprite[] NewsButtons;
+    public Image NewsButton;
+
+    public Sprite[] ArrivalsButtons;
+    public Image ArrivalsButton;
+
+    public Sprite[] EventsButtons;
+    public Image EventsButton;
+
+    public Sprite[] AwardsButtons;
+    public Image AwardsButton;
+
+    public Sprite[] ToolsButtons;
+    public Image[] ActualToolsButtons;
+
     public Sprite[] characters;
     public Image mainCharacter;
 
@@ -20,7 +38,10 @@ public class AppColorPicker : MonoBehaviour
     public ChangePanel cpScript;
     public LoginSystem lsScript;
 
-
+    //0:Red
+    //1:Blue
+    //2:Green
+    //3:Purple
     
     void Start()
     {
@@ -50,6 +71,11 @@ public class AppColorPicker : MonoBehaviour
             {
                 backgrounds[i].texture = mainColor;
             }
+            JobsButton.sprite = JobsButtons[c];
+            NewsButton.sprite = NewsButtons[c];
+            ArrivalsButton.sprite = ArrivalsButtons[c];
+            EventsButton.sprite = EventsButtons[c];
+            AwardsButton.sprite = AwardsButtons[c];
             changeColor = false;
 
             cpScript.ChangeToPanel(lsScript.panelName);

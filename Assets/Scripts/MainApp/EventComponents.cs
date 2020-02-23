@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.Networking;
+using UnityEngine.UI;
 using UnityEngine;
 using TMPro;
 public class EventComponents : MonoBehaviour
@@ -18,12 +19,14 @@ public class EventComponents : MonoBehaviour
     public float timer;
     public float timerDuration;
     public Event thisEvent;
+    public Slider slider;
 
 
     // Start is called before the first frame update
     void Start()
     {
         lsScript = FindObjectOfType<LoginSystem>();
+        slider = GetComponentInChildren<Slider>();
         userID = lsScript.user.user_ID;
         StartCoroutine(GetBool("https://testserversoubra.herokuapp.com/CheckArray/" + ID + "/" + userID));
     }
@@ -33,10 +36,11 @@ public class EventComponents : MonoBehaviour
     {
         timer += Time.deltaTime;
 
-        buttons.SetActive(showButtons);
+        slider.gameObject.SetActive(showButtons);
 
         if (timer > timerDuration)
         {
+            Debug.Log("CHECKING IF VOTED");
             StartCoroutine(GetBool("https://testserversoubra.herokuapp.com/CheckArray/" + ID + "/" + userID));
             StartCoroutine(GetEvent("https://testserversoubra.herokuapp.com/SendEventArray/" + ID));
 
@@ -71,10 +75,12 @@ public class EventComponents : MonoBehaviour
 
             if (data.Contains("True"))
             {
+                Debug.Log("Voted True");
                 showButtons = false;
             }
             else if(data.Contains("False"))
             {
+                Debug.Log("Voted False");
                 showButtons = true;
             }
         }
@@ -96,6 +102,19 @@ public class EventComponents : MonoBehaviour
         StartCoroutine(GetRequest("https://testserversoubra.herokuapp.com/AddToNegative/" + ID + "/1"));
         AddToArray();
         Debug.Log("https://testserversoubra.herokuapp.com/AddToNegative/" + ID + "/1");
+    }
+
+    public void Vote()
+    {
+        if (slider.value > 0)
+        {
+            StartCoroutine(GetRequest("https://testserversoubra.herokuapp.com/AddToPositive/" + ID + "/" + slider.value));
+        }
+        if (slider.value < 0)
+        {
+            StartCoroutine(GetRequest("https://testserversoubra.herokuapp.com/AddToNegative/" + ID + "/" + slider.value));
+        }
+        AddToArray();
     }
 
     IEnumerator GetEvent(string uri)

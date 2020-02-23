@@ -68,7 +68,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Texture: {fileID: 2800000, guid: f2778a086477547058579073a9167b65, type: 3}
+  m_Texture: {fileID: 2800000, guid: 055ce90ab21e6eb429c385c7c37c68e5, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -165,7 +165,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0000085831, y: -176}
+  m_AnchoredPosition: {x: 0.0000085831, y: 2}
   m_SizeDelta: {x: 250, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8523680638702674321
@@ -198,8 +198,8 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: Book Name
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -300,6 +300,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BrowserOpener
       objectReference: {fileID: 0}
+    - target: {fileID: 4330814910900228899, guid: 68fa1c5e5f11d4cf0adf35bb56aca2b8,
+        type: 3}
+      propertyPath: pageToOpen
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4330814910900228896, guid: 68fa1c5e5f11d4cf0adf35bb56aca2b8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -354,11 +359,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4330814910900228899, guid: 68fa1c5e5f11d4cf0adf35bb56aca2b8,
-        type: 3}
-      propertyPath: pageToOpen
-      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 68fa1c5e5f11d4cf0adf35bb56aca2b8, type: 3}

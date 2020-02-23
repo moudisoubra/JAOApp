@@ -1,9 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class NewsComponents : MonoBehaviour
 {
+    public string ID;
+    public TextMeshProUGUI Title;
+    public TextMeshProUGUI Content;
     // Start is called before the first frame update
     void Start()
     {

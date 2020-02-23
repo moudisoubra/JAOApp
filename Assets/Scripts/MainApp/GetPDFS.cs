@@ -12,6 +12,7 @@ public class GetPDFS : MonoBehaviour
     public PDFList pdfList;
     public bool createBooks;
     public bool doneCreatingBooks;
+    public bool start;
     public GameObject bookPrefab;
     public Transform scrollRect;
 
@@ -43,7 +44,7 @@ public class GetPDFS : MonoBehaviour
             timer = 0;
         }
 
-        if (createBooks && !doneCreatingBooks)
+        if (createBooks && !doneCreatingBooks && start)
         {
             Debug.Log(pdfList.pdf.Count);
             for (int i = 0; i < pdfList.pdf.Count; i++)

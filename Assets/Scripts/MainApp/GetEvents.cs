@@ -14,6 +14,7 @@ public class GetEvents : MonoBehaviour
     public bool createEvent;
     public bool doneCreatingEvents;
     public bool submittingIdea;
+    public bool start;
     public GameObject eventPrefab;
     public List<GameObject> allEvents;
     public Transform parent;
@@ -46,7 +47,7 @@ public class GetEvents : MonoBehaviour
             timer = 0;
         }
 
-        if (createEvent && !doneCreatingEvents)
+        if (createEvent && !doneCreatingEvents && start)
         {
             Debug.Log(eventList.events.Count);
             for (int i = 0; i < eventList.events.Count; i++)

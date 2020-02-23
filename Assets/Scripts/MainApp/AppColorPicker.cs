@@ -31,12 +31,22 @@ public class AppColorPicker : MonoBehaviour
     public Sprite[] characters;
     public Image mainCharacter;
 
+    public GameObject[] bookPrefabs;
+    public GameObject[] jobApplicationPrefabs;
+    public GameObject[] eventsPrefabs;
+    public GameObject[] newsPrefabs;
+
     public bool changeColor;
 
     public int color;
 
     public ChangePanel cpScript;
     public LoginSystem lsScript;
+    public GetPDFS gpScript;
+    public GetJobs gjScript;
+    public GetEvents geScript;
+    public Getnews gnScript;
+
 
     //0:Red
     //1:Blue
@@ -76,6 +86,18 @@ public class AppColorPicker : MonoBehaviour
             ArrivalsButton.sprite = ArrivalsButtons[c];
             EventsButton.sprite = EventsButtons[c];
             AwardsButton.sprite = AwardsButtons[c];
+            gpScript.bookPrefab = bookPrefabs[c];
+            gjScript.jobPrefab = jobApplicationPrefabs[c];
+            geScript.eventPrefab = eventsPrefabs[c];
+            gnScript.newsPrefab = newsPrefabs[c];
+            gnScript.start = true;
+            geScript.start = true;
+            gpScript.start = true;
+            gjScript.start = true;
+            for (int i = 0; i < ActualToolsButtons.Length; i++)
+            {
+                ActualToolsButtons[i].sprite = ToolsButtons[c];
+            }
             changeColor = false;
 
             cpScript.ChangeToPanel(lsScript.panelName);

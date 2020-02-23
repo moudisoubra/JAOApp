@@ -11,7 +11,8 @@ public class BrowserOpener : MonoBehaviour {
 		InAppBrowser.DisplayOptions options = new InAppBrowser.DisplayOptions();
 		options.displayURLAsPageTitle = false;
 		options.pageTitle = pageTitle;
-
+        options.pinchAndZoomEnabled = true;
+        options.hidesTopBar = true;
 		InAppBrowser.OpenURL(pageToOpen, options);
 		Debug.Log("HERE ");
 	}

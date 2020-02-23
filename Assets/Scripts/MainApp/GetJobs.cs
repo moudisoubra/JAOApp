@@ -14,6 +14,7 @@ public class GetJobs : MonoBehaviour
     public bool createJob;
     public bool doneCreatingJobs;
     public bool submittingIdea;
+    public bool start;
     public GameObject jobPrefab;
     public List<GameObject> allJobs;
     public Transform parent;
@@ -45,7 +46,7 @@ public class GetJobs : MonoBehaviour
             timer = 0;
         }
 
-        if (createJob && !doneCreatingJobs)
+        if (createJob && !doneCreatingJobs && start)
         {
             //Debug.Log(Jlist.job.Count);
             for (int i = 0; i < Jlist.job.Count; i++)

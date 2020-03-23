@@ -78,7 +78,7 @@ public class CheckPizza : MonoBehaviour
 
             }
 
-            while (ingredientsAdded.Count < 10)
+            while (ingredientsAdded.Count < 16)
             {
                 int otherTempValue = Random.Range(0, allIngredients.values.Count);
                 if (!ingredientsAdded.Contains(allIngredients.values[otherTempValue]))
@@ -88,7 +88,7 @@ public class CheckPizza : MonoBehaviour
             }
 
 
-            while (ingredientsAddedToButtons.Count < 10)
+            while (ingredientsAddedToButtons.Count < 16)
             {
 
                 int tempNumber = Random.Range(0, ingredientsAdded.Count);

@@ -7,6 +7,7 @@ using TMPro;
 
 public class LoginSystem : MonoBehaviour
 {
+    public ProfileComponents pcScript;
     public User user;
     public pics pic;
     public RawImage RI;
@@ -69,6 +70,15 @@ public class LoginSystem : MonoBehaviour
         StartCoroutine(GetRequest(login));
     }
 
+    public void FeedProfileComponent(string name, string nationality, string property, string department, string position, string userID)
+    {
+        pcScript.name.text = name;
+        pcScript.nationality.text = nationality;
+        pcScript.property.text = property;
+        pcScript.department.text = department;
+        pcScript.position.text = position;
+        pcScript.userID = userID;
+    }
     IEnumerator GetRequest(string uri)
     {
         Debug.Log("Coroutine Started");
@@ -104,13 +114,14 @@ public class LoginSystem : MonoBehaviour
                 " user gender: " + userData.user_Gender +
                 " user seniority: " + userData.user_Seniority +
                 "user house: " + userData.user_House +
-                "user login: " + userData.user_Login);
+                "user login: " + userData.user_Login + 
+                "user Nationality: " + userData.user_Nationality);
 
                 user = userData;
 
                 PlayerPrefs.SetString("UserName", user.user_Name);
                 PlayerPrefs.SetString("Password", user.user_Password);
-
+                FeedProfileComponent(user.user_Name, user.user_Nationality, user.user_Property, user.user_Department ,user.user_Position, user.user_ID);
 
                 acpScript.SetColorNumber(user.user_House);
 
@@ -173,6 +184,10 @@ public class LoginSystem : MonoBehaviour
         public string user_Seniority;
         public int user_House;
         public string user_Login;
+        public string user_Nationality;
+        public string user_Department;
+        public string user_Property;
+        public string user_Position;
         public string resetPassword;
     }
 
